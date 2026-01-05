@@ -3,13 +3,14 @@ name: first_workflow
 on:
     push:
         branches:
-            -main
+            - main
 
     workflow_dispatch:
 
 jobs:
     build:
         runs-on: ubuntu-latest
+        
         steps:
             - name: cloning repo
               uses: actions/checkout@v4
