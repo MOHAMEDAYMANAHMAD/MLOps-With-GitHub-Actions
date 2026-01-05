@@ -27,7 +27,8 @@ jobs:
 
 
             - name: Validate FastAPI is running
-              run: curl --fail http://0.0.0.0:8000/docs
+              run: curl http://localhost:8000/docs
+
 
             - name: Stop container
               run: docker stop fastapi_test
