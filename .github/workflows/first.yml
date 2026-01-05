@@ -21,5 +21,17 @@ jobs:
             - name: Docker login
               run: docker login -u moayman181 -p ${{secrets.DOCKER_HUB_TOKEN}}
 
+            - name: Run container for validation
+              run: |
+                docker run -d -p 8000:8000 --name fastapi_test moayman181/mlops_github_actions:latest
+                sleep 10
+
+            - name: Validate FastAPI is running
+              run: curl --fail http://127.0.0.1:8000/docs
+
+            - name: Stop container
+              run: docker stop fastapi_test
+
+
             - name: Docker push
               run: docker push moayman181/mlops_github_actions:latest 
