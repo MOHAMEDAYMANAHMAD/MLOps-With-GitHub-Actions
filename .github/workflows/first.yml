@@ -23,7 +23,8 @@ jobs:
             - name: Run container
               run: |
                 docker run -d -p 8000:8000 --name fastapi_test moayman181/mlops_github_actions:latest
-                sleep 5
+                sleep 10
+                docker logs fastapi_test
 
             - name: Validate FastAPI is running
               run: curl --fail http://localhost:8000/docs
